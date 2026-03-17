@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 class Program
 {
-    static List<Student> students = new List<Student>();
+    static List<Student> students = FileManager.LoadStudents();
 
     static void Main()
     {
@@ -55,6 +55,7 @@ class Program
 
         Student newStudent = new Student(id, name, age);
         students.Add(newStudent);
+        FileManager.SaveStudents(students);
 
         Console.WriteLine("Student added successfully.");
     }
@@ -84,6 +85,7 @@ class Program
         if (studentToRemove != null)
         {
             students.Remove(studentToRemove);
+            FileManager.SaveStudents(students);
             Console.WriteLine("Student deleted successfully.");
         }
         else
